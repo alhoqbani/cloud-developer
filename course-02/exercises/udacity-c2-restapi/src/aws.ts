@@ -3,9 +3,11 @@ import { config } from './config/config';
 
 const c = config.dev;
 
-//Configure AWS
-var credentials = new AWS.SharedIniFileCredentials({profile: config.dev.aws_profile});
-AWS.config.credentials = credentials;
+//Configure AWS (Don't need SharedIniFileCredentials when deployed, use ec2 role'
+if(process.env.AWS_PROFILE !== 'DEPLOYED') {
+    var credentials = new AWS.SharedIniFileCredentials({profile: config.dev.aws_profile});
+    AWS.config.credentials = credentials;
+}
 
 export const s3 = new AWS.S3({
   signatureVersion: 'v4',

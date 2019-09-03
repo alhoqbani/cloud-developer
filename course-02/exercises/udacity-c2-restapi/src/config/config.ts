@@ -5,9 +5,9 @@ export const config = {
     "database": process.env.POSTGRESS_DATABASE,
     "host": process.env.POSTGRESS_HOST,
     "dialect": "postgres",
-    "aws_reigion": "us-east-1",
-    "aws_profile": "udagram",
-    "aws_media_bucket": "udacity-cdnd-udagram"
+    "aws_reigion": process.env.AWS_REIGION,
+    "aws_profile": process.env.AWS_PROFILE,
+    "aws_media_bucket": process.env.AWS_MEDIA_BUCKET,
   },
   "prod": {
     "username": "",
